@@ -1,5 +1,5 @@
 {
-    "cucumberautocomplete.steps": [
+    "sonk-cucumber-autocomplete.steps": [
         "test/**/*.js",
         "test/non/existent/path/*.js"
     ]

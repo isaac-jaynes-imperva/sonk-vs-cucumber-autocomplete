@@ -108,7 +108,7 @@ connection.onInitialized(() => {
 async function getSettings(forceReset?: boolean) {
     if (!globalSettings || forceReset) {
         const baseSettings = await connection.workspace.getConfiguration({
-            section: 'cucumberautocomplete'
+            section: 'sonkcucumberautocomplete'
         });
         globalSettings = getSettingsFromBase(baseSettings);
     }

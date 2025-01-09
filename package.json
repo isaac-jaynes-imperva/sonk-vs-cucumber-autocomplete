@@ -1,21 +1,21 @@
 {
-  "name": "cucumberautocomplete",
+  "name": "sonk-cucumber-autocomplete",
   "version": "3.0.5",
-  "publisher": "alexkrechik",
-  "author": "Alexander Krechik",
+  "publisher": "isaacjaynes",
+  "author": "Isaac Jaynes",
   "license": "MIT",
-  "displayName": "Cucumber (Gherkin) Full Support",
+  "displayName": "Sonk Cucumber (Gherkin) Full Support",
   "description": "VSCode Cucumber (Gherkin) Full Language Support + Formatting + Autocomplete",
-  "homepage": "https://github.com/alexkrechik/VSCucumberAutoComplete",
+  "homepage": "https://github.com/isaac-jaynes-imperva/sonk-vs-cucumber-autocomplete",
   "engines": {
     "vscode": "^1.75.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexkrechik/VSCucumberAutoComplete"
+    "url": "https://github.com/isaac-jaynes-imperva/sonk-vs-cucumber-autocomplete"
   },
   "bugs": {
-    "url": "https://github.com/alexkrechik/VSCucumberAutoComplete/issues"
+    "url": "https://github.com/isaac-jaynes-imperva/sonk-vs-cucumber-autocomplete/issues"
   },
   "categories": [
     "Programming Languages"
@@ -28,6 +28,8 @@
   ],
   "main": "./gclient/out/extension",
   "icon": "img/icon.png",
+  "activationEvents": [
+	],
   "contributes": {
     "languages": [
       {
@@ -73,9 +75,9 @@
       }
     ],
     "configuration": {
-      "title": "Cucumber Auto Complete settings",
+      "title": "Sonk Cucumber Auto Complete settings",
       "properties": {
-        "cucumberautocomplete.steps": {
+        "sonk-cucumber-autocomplete.steps": {
           "description": "Path or array of glob-style-pathes to the steps files",
           "type": [
             "array",
@@ -83,12 +85,12 @@
           ],
           "required": false
         },
-        "cucumberautocomplete.pages": {
+        "sonk-cucumber-autocomplete.pages": {
           "description": "Object, which consists of 'page name' => 'page object file path' pairs",
           "type": "object",
           "required": false
         },
-        "cucumberautocomplete.syncfeatures": {
+        "sonk-cucumber-autocomplete.syncfeatures": {
           "description": "Will get steps using count from glob-style path or from '**/*.feature' if true",
           "type": [
             "boolean",
@@ -97,67 +99,67 @@
           "required": false,
           "default": "test/features/*.feature"
         },
-        "cucumberautocomplete.strictGherkinCompletion": {
+        "sonk-cucumber-autocomplete.strictGherkinCompletion": {
           "description": "Strict comparing of declaration func and gherkin word (ex. show only steps, declared via 'When()' func for the 'When ' string",
           "type": "boolean",
           "required": false,
           "default": false
         },
-        "cucumberautocomplete.strictGherkinValidation": {
+        "sonk-cucumber-autocomplete.strictGherkinValidation": {
           "description": "Compare step body and gherkin word during steps validation",
           "type": "boolean",
           "required": false,
           "default": false
         },
-        "cucumberautocomplete.smartSnippets": {
+        "sonk-cucumber-autocomplete.smartSnippets": {
           "description": "Change all the parts, that requires some user input (like .*, ([a-z]+), \\w{1,3}) to snippets",
           "type": "boolean",
           "required": false,
           "default": false
         },
-        "cucumberautocomplete.stepsInvariants": {
+        "sonk-cucumber-autocomplete.stepsInvariants": {
           "description": "Show all the 'or' steps parts as separate suggestions (ex. show `I use a` and `I use b` steps suggestions for the `I use (a|b)` step",
           "type": "boolean",
           "required": false,
           "default": false
         },
-        "cucumberautocomplete.customParameters": {
+        "sonk-cucumber-autocomplete.customParameters": {
           "description": "Change some steps RegEx parts depending on array of 'parameter' - 'value' key pairs. Parameter could be string or RegEx object",
           "type": "array",
           "required": false,
           "default": []
         },
-        "cucumberautocomplete.skipDocStringsFormat": {
+        "sonk-cucumber-autocomplete.skipDocStringsFormat": {
           "description": "Skip format of strings, that placed between ''' or \"\"\" strings",
           "type": "boolean",
           "required": false,
           "default": false
         },
-        "cucumberautocomplete.formatConfOverride": {
+        "sonk-cucumber-autocomplete.formatConfOverride": {
           "description": "Override some formatting via format conf strings = {[key: String]: num | 'relative'}, where key - beggining of the string, num - numeric value of indents",
           "type": "object",
           "required": false,
           "default": {}
         },
-        "cucumberautocomplete.onTypeFormat": {
+        "sonk-cucumber-autocomplete.onTypeFormat": {
           "description": "Enable ontype formattings (activating after pressing on space, @ and : keys)",
           "type": "boolean",
           "required": false,
           "default": false
         },
-        "cucumberautocomplete.gherkinDefinitionPart": {
+        "sonk-cucumber-autocomplete.gherkinDefinitionPart": {
           "description": "Provide step definition name part of regex(ex. '@(given|when|then|step)\\(' in case of python-like steps. Please ensure, that they are placed in regex match '()' braces",
           "type": "string",
           "required": false,
           "default": false
         },
-        "cucumberautocomplete.stepRegExSymbol": {
+        "sonk-cucumber-autocomplete.stepRegExSymbol": {
           "description": "Provide step regex symbol. Ex. it would be \"'\" for When('I do something') definition",
           "type": "string",
           "required": false,
           "default": false
         },
-        "cucumberautocomplete.pureTextSteps": {
+        "sonk-cucumber-autocomplete.pureTextSteps": {
           "description": "Using steps definitions as a text strings with custom cucumber expressions support",
           "type": "boolean",
           "required": false,

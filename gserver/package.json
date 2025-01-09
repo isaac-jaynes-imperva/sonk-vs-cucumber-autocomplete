@@ -1,6 +1,6 @@
 {
-  "name": "cucumberautocomplete-server",
-  "description": "Node.JS server part of VsCucumberAutoComplete extension",
+  "name": "sonkcucumberautocomplete-server",
+  "description": "Node.JS server part of sonk-vs-cucumber-autocomplete extension",
   "version": "3.0.5",
   "author": "Alexander Krechik",
   "license": "MIT",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexkrechik/VSCucumberAutoComplete"
+    "url": "https://github.com/isaac-jaynes-imperva/sonk-vs-cucumber-autocomplete"
   },
   "dependencies": {
     "doctrine": "^2.1.0",

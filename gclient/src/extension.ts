@@ -29,7 +29,7 @@ export function activate(context: ExtensionContext) {
     // Options to control the language client
     const clientOptions: LanguageClientOptions = {
     // Register the server for Cucumber feature files
-        documentSelector: [{ scheme: 'file', language: 'feature' }],
+        documentSelector: [{ scheme: 'file', language: 'feature', pattern: '**/*.feature' }],
         synchronize: {
             // Notify the server about file changes to '.clientrc files contain in the workspace
             fileEvents: workspace.createFileSystemWatcher('**/.clientrc'),
@@ -38,7 +38,7 @@ export function activate(context: ExtensionContext) {
 
     // Create the language client and start the client.
     client = new LanguageClient(
-        'cucumberautocomplete-client',
+        'sonkcucumberautocomplete-client',
         'Cucumber auto complete plugin',
         serverOptions,
         clientOptions

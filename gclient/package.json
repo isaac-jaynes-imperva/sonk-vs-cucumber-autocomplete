@@ -1,13 +1,13 @@
 {
-  "name": "cucumberautocomplete-client",
-  "description": "VSCode client part of VsCucumberAutoComplete extension",
+  "name": "sonkcucumberautocomplete-client",
+  "description": "VSCode client part of sonk-vs-cucumber-autocomplete extension",
   "author": "Alexander Krechik",
   "license": "MIT",
   "version": "3.0.5",
   "publisher": "alexkrechik",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexkrechik/VSCucumberAutoComplete"
+    "url": "https://github.com/isaac-jaynes-imperva/sonk-vs-cucumber-autocomplete"
   },
   "engines": {
     "vscode": "^1.75.0"

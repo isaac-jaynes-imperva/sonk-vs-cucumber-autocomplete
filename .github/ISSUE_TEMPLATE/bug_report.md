@@ -23,17 +23,17 @@ If applicable, add screenshots to help explain your problem.
 **Cucumberautocomplete part of VSCode settings:**
 ```
 {
-  "cucumberautocomplete.steps": [
+  "sonk-cucumber-autocomplete.steps": [
       "features/step_definitions/*.js",
       "node_modules/@revjet/csp-qa/src/steps/*.js"
   ],
-  "cucumberautocomplete.skipDocStringsFormat": true,
-  "cucumberautocomplete.syncfeatures": "features/*.feature",
-  "cucumberautocomplete.strictGherkinCompletion": true,
-  "cucumberautocomplete.smartSnippets": true,
-  "cucumberautocomplete.stepsInvariants": true,
-  "cucumberautocomplete.onTypeFormat": false,
-  "cucumberautocomplete.formatConfOverride": {
+  "sonk-cucumber-autocomplete.skipDocStringsFormat": true,
+  "sonk-cucumber-autocomplete.syncfeatures": "features/*.feature",
+  "sonk-cucumber-autocomplete.strictGherkinCompletion": true,
+  "sonk-cucumber-autocomplete.smartSnippets": true,
+  "sonk-cucumber-autocomplete.stepsInvariants": true,
+  "sonk-cucumber-autocomplete.onTypeFormat": false,
+  "sonk-cucumber-autocomplete.formatConfOverride": {
       "And": 0,
   }
 }

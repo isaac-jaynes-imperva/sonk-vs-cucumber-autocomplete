@@ -122,7 +122,7 @@ export default class PagesHandler {
                                 end: { line: lineNum, character: curr - 1 },
                             },
                             message: `Was unable to find page "${page}"`,
-                            source: 'cucumberautocomplete',
+                            source: 'sonkcucumberautocomplete',
                         });
                     } else if (!this.getPageObjectElement(page, pageObject)) {
                         res.push({
@@ -135,7 +135,7 @@ export default class PagesHandler {
                                 },
                             },
                             message: `Was unable to find page object "${pageObject}" for page "${page}"`,
-                            source: 'cucumberautocomplete',
+                            source: 'sonkcucumberautocomplete',
                         });
                     }
                 }

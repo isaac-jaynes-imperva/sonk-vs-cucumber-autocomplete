@@ -112,8 +112,7 @@ export default class StepsHandler {
     }
 
     getStepRegExp(): RegExp {
-    //Actually, we dont care what the symbols are before our 'Gherkin' word
-    //But they shouldn't end with letter
+
         const startPart = "^((?:[^'\"/]*?[^\\w])|.{0})";
 
         //All the steps should be declared using any gherkin keyword. We should get first 'gherkin' word
@@ -121,31 +120,26 @@ export default class StepsHandler {
       this.settings.gherkinDefinitionPart ||
       `(${allGherkinWords}|defineStep|Step|StepDefinition)`;
 
-        //All the symbols, except of symbols, using as step start and letters, could be between gherkin word and our step
-        const nonStepStartSymbols = '[^/\'"`\\w]*?';
+        const nonStepStartSymbols = '\\((\\s*?)';
 
         // Step part getting
         const { stepRegExSymbol } = this.settings;
-        // Step text could be placed between '/' symbols (ex. in JS) or between quotes, like in Java
-        const stepStart = stepRegExSymbol ? `(${stepRegExSymbol})` : '(/|\'|"|`)';
-        // ref to RegEx Example: https://regex101.com/r/mS1zJ8/1
-        // Use a RegEx that peeks ahead to ensure escape character can still work, like `\'`.
-        const stepBody = '((?:(?=(?:\\\\)*)\\\\.|.)*?)';
-        //Step should be ended with same symbol it begins
-        const stepEnd = stepRegExSymbol ? stepRegExSymbol : '\\3';
 
-        //Our RegExp will be case-insensitive to support cases like TypeScript (...@when...)
+        const stepStart = stepRegExSymbol ? `([${stepRegExSymbol}])` : '([/"\'])';
+
+        const stepBody = '([\\s\\S]*?)';
+        //Step should be ended with same symbol it begins
+        const stepEnd = '\\4,';
+
         const r = new RegExp(
-            startPart +
-        gherkinPart +
-        nonStepStartSymbols +
-        stepStart +
-        stepBody +
-        stepEnd,
+            gherkinPart +
+            nonStepStartSymbols +
+            '(' + stepStart +
+            stepBody + ')' +
+            stepEnd,
             'i'
         );
 
-        // /^((?:[^'"\/]*?[^\w])|.{0})(Given|When|Then|And|But|defineStep)[^\/'"\w]*?(\/|'|")([^\3]+)\3/i
         return r;
     }
 
@@ -528,6 +522,7 @@ export default class StepsHandler {
         const fileContent = getFileContent(filePath);
         const fileComments = this.getMultiLineComments(fileContent);
         const definitionFile = clearComments(fileContent);
+        console.log(`file: ${filePath}`);
         return definitionFile
             .split(/\r?\n/g)
             .reduce((steps, line, lineIndex, lines) => {
@@ -552,16 +547,20 @@ export default class StepsHandler {
                     }
                 }
                 if (match) {
-                    const [, beforeGherkin, gherkinString, , stepPart] = match;
-                    const gherkin = getGherkinTypeLower(gherkinString);
-                    const pos = Position.create(lineIndex, beforeGherkin.length);
-                    const def = Location.create(
-                        getOSPath(filePath),
-                        Range.create(pos, pos)
-                    );
-                    steps = steps.concat(
-                        this.getSteps(finalLine, stepPart, def, gherkin, fileComments)
-                    );
+                    const [, gherkinString, , , ,stepPart] = match;
+                    if (gherkinString) {
+                        console.log(`gherkinString: ${gherkinString}`);
+                        console.log(`stepPart: ${stepPart}`);
+                        const gherkin = getGherkinTypeLower(gherkinString);
+                        const pos = Position.create(lineIndex, 0);
+                        const def = Location.create(
+                            getOSPath(filePath),
+                            Range.create(pos, pos)
+                        );
+                        steps = steps.concat(
+                            this.getSteps(finalLine, stepPart, def, gherkin, fileComments)
+                        );
+                    }
                 }
                 return steps;
             }, new Array<Step>());
@@ -584,7 +583,7 @@ export default class StepsHandler {
                     severity: DiagnosticSeverity.Warning,
                     range: range,
                     message: 'No steps files found',
-                    source: 'cucumberautocomplete',
+                    source: 'sonkcucumberautocomplete',
                 });
             }
             return res;
@@ -647,7 +646,7 @@ export default class StepsHandler {
                     end: { line: lineNum, character: line.length },
                 },
                 message: `Was unable to find step for "${lineForError}"`,
-                source: 'cucumberautocomplete',
+                source: 'sonkcucumberautocomplete',
             } as Diagnostic;
         }
     }
