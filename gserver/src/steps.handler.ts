@@ -549,8 +549,7 @@ export default class StepsHandler {
                 if (match) {
                     const [, gherkinString, , , ,stepPart] = match;
                     if (gherkinString) {
-                        console.log(`gherkinString: ${gherkinString}`);
-                        console.log(`stepPart: ${stepPart}`);
+                        console.log(`step: ${stepPart}`);
                         const gherkin = getGherkinTypeLower(gherkinString);
                         const pos = Position.create(lineIndex, 0);
                         const def = Location.create(

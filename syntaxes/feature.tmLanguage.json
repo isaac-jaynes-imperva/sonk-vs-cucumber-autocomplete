@@ -27,6 +27,12 @@
       "include": "#strings_double_quote"
     },
     {
+      "include": "#file_name"
+    },
+    {
+      "include": "#db_collection"
+    },
+    {
       "include": "#comments"
     },
     {
@@ -92,6 +98,14 @@
     "scenario_outline_variable": {
       "match": "<[a-zA-Z0-9 _-]*>",
       "name": "variable.other"
+    },
+    "file_name": {
+      "match": "\\s+(\\w+\\.\\w+)\\s+",
+      "name": "keyword.other.filename"
+    },
+    "db_collection": {
+      "match": "\\s+(\\w+-\\w+)\\s+",
+      "name": "variable.parameter"
     },
     "strings_double_quote": {
       "begin": "(?<![a-zA-Z0-9'])\"",
