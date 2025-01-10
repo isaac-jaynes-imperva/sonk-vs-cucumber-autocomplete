@@ -39,7 +39,7 @@ export function activate(context: ExtensionContext) {
     // Create the language client and start the client.
     client = new LanguageClient(
         'sonkcucumberautocomplete-client',
-        'Cucumber auto complete plugin',
+        'Sonk Cucumber auto complete plugin',
         serverOptions,
         clientOptions
     );

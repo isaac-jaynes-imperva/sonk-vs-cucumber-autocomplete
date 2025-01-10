@@ -522,7 +522,7 @@ export default class StepsHandler {
         const fileContent = getFileContent(filePath);
         const fileComments = this.getMultiLineComments(fileContent);
         const definitionFile = clearComments(fileContent);
-        console.log(`file: ${filePath}`);
+        // console.log(`file: ${filePath}`);
         return definitionFile
             .split(/\r?\n/g)
             .reduce((steps, line, lineIndex, lines) => {
@@ -549,7 +549,7 @@ export default class StepsHandler {
                 if (match) {
                     const [, gherkinString, , , ,stepPart] = match;
                     if (gherkinString) {
-                        console.log(`step: ${stepPart}`);
+                        // console.log(`step: ${stepPart}`);
                         const gherkin = getGherkinTypeLower(gherkinString);
                         const pos = Position.create(lineIndex, 0);
                         const def = Location.create(
